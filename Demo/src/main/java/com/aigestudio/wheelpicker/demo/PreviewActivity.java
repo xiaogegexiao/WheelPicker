@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.aigestudio.wheelpicker.WheelPicker;
+import com.aigestudio.wheelpicker.widgets.WheeliOSLikeDateTimePicker;
 
 /**
  * @author AigeStudio 2015-12-06
@@ -18,6 +19,8 @@ public class PreviewActivity extends Activity implements WheelPicker.OnItemSelec
     private WheelPicker wheelCenter;
     private WheelPicker wheelRight;
 
+    private WheeliOSLikeDateTimePicker wheeliOSLikeDateTimePicker;
+
     private Button gotoBtn;
     private Integer gotoBtnItemIndex;
 
@@ -25,6 +28,8 @@ public class PreviewActivity extends Activity implements WheelPicker.OnItemSelec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_preview);
+
+        wheeliOSLikeDateTimePicker = (WheeliOSLikeDateTimePicker) findViewById(R.id.main_wheel_iOS_date);
 
         wheelLeft = (WheelPicker) findViewById(R.id.main_wheel_left);
         wheelLeft.setOnItemSelectedListener(this);
@@ -62,8 +67,9 @@ public class PreviewActivity extends Activity implements WheelPicker.OnItemSelec
 
     @Override
     public void onClick(View v) {
-        wheelCenter.setSelectedItemPosition(gotoBtnItemIndex);
-        randomlySetGotoBtnIndex();
+//        wheelCenter.setSelectedItemPosition(gotoBtnItemIndex);
+//        randomlySetGotoBtnIndex();
+        Toast.makeText(this,wheeliOSLikeDateTimePicker.getCurrentDate().toString(), Toast.LENGTH_LONG).show();
     }
 
 }
